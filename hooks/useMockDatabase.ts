@@ -1,6 +1,6 @@
 
 import { useState, useCallback } from 'react';
-import { Album, ThemeConfig, VisualizerPreset, HeroSlide, ArtistBioEntry, BlogPost, KnowledgeBaseEntry, Track } from '../types';
+import { Album, ThemeConfig, VisualizerPreset, HeroSlide, ArtistBioEntry, BlogPost, KnowledgeBaseEntry, Track, SocialLink } from '../types';
 
 // Sample audio - Royalty Free Music from Bensound
 const sampleAudio1 = "https://www.bensound.com/bensound-music/bensound-beyondtheline.mp3";
@@ -55,6 +55,12 @@ const initialKnowledge: KnowledgeBaseEntry[] = [
     { id: 'kb-1', title: 'Cyberpunk Preset Details', content: 'Technical details of the Cyberpunk Pulse preset.', type: 'preset', tags: ['visualizer', 'cyberpunk'] },
 ];
 
+const initialSocialLinks: SocialLink[] = [
+    { id: 'social-1', platform: 'Spotify', url: 'https://open.spotify.com' },
+    { id: 'social-2', platform: 'YouTube', url: 'https://www.youtube.com' },
+    { id: 'social-3', platform: 'SoundCloud', url: 'https://soundcloud.com' },
+];
+
 
 export const useMockDatabase = () => {
   const [albums, setAlbums] = useState<Album[]>(initialAlbums);
@@ -64,6 +70,7 @@ export const useMockDatabase = () => {
   const [bioEntries, setBioEntries] = useState<ArtistBioEntry[]>(initialBio);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(initialBlogPosts);
   const [knowledge, setKnowledge] = useState<KnowledgeBaseEntry[]>(initialKnowledge);
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>(initialSocialLinks);
 
   const createId = () => `id-${new Date().getTime()}`;
 
@@ -93,6 +100,7 @@ export const useMockDatabase = () => {
     artistBio: crud(bioEntries, setBioEntries),
     blogPosts: crud(blogPosts, setBlogPosts),
     knowledgeBase: crud(knowledge, setKnowledge),
+    socialLinks: crud(socialLinks, setSocialLinks),
   };
 };
 

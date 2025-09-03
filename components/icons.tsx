@@ -48,6 +48,44 @@ export const ThemeIcon = () => (
   </svg>
 );
 
+export const AgentsIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3.75H19.5a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75V4.5a.75.75 0 01.75-.75zM8.25 3.75V2.25m0 1.5V5.25m0-1.5H3.75m4.5 0H6.75m0 0H5.25m0 0H3.75m0 0V2.25m0 1.5V5.25m0 0v1.5m0 0v1.5m0 0v1.5m0 0v1.5m0 0v1.5m0 0v1.5m0 0V18m0 0v1.5m0 0v.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75M6 12.75h.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75m-4.5 0H3.75m0 0h.75m0 0h.75m0 0h.75m0 0h.75M6 12.75v.75m0 0v.75m0 0v.75m0 0v.75m0 0v.75m0 0V18m0 0v.75m0 0v.75m0 0v.75m0 0v.75m0 0h.75m0 0h.75M6 12.75h.75" />
+    </svg>
+);
+
+export const BugAntIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.378 2.41c.28-.42.87-.53 1.29-.25l.09.06 4.25 2.5c.34.2.49.63.31.99l-.05.1-3.5 6.06c.86.38 1.63.92 2.27 1.61l.1.1 2.5 2.5c.39.39.39 1.02 0 1.41l-.09.08-1.41 1.42c-.39.39-1.02.39-1.41 0l-.09-.08-2.5-2.5a5.5 5.5 0 01-1.68-2.34L8.5 17.5l-2.09-2.09a3.5 3.5 0 010-4.95l-.08-.08 6.04-3.5zm.63 9.09a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm-5.66 4.95l-1.41-1.42c-.39-.39-1.02-.39-1.41 0l-.09.08-1.41 1.41c-.39.39-.39 1.02 0 1.41l.08.09 1.42 1.41c.39.39 1.02.39 1.41 0l.09-.08 1.41-1.41z" />
+    </svg>
+);
+
+export const KeyIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+    </svg>
+);
+
+
+export const MegaphoneIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.29 3.86L1.82 18a2.25 2.25 0 001.95 3.44h16.46a2.25 2.25 0 001.95-3.44L13.71 3.86a2.25 2.25 0 00-3.42 0zM9 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm1.5 3.75a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75v-.01z" />
+    </svg>
+);
+
+
+export const DatabaseIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h12A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5H6A2.25 2.25 0 013.75 8.25V6zM3.75 13.5A2.25 2.25 0 016 11.25h12a2.25 2.25 0 012.25 2.25v2.25A2.25 2.25 0 0118 18H6a2.25 2.25 0 01-2.25-2.25V13.5z" />
+    </svg>
+);
+
+export const WandSparklesIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+    </svg>
+);
+
 export const CloseIcon = () => (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -78,3 +116,38 @@ export const AiSparkleIcon = () => (
     </svg>
 );
 
+export const PlayIcon = () => (
+    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+    </svg>
+);
+
+export const PauseIcon = () => (
+    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+    </svg>
+);
+
+export const SpotifyIcon = () => (
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="Spotify">
+       <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.184 14.121c-.249.407-.802.546-1.21.301-3.34-2.03-7.58-2.486-12.553-1.373-.464.103-.94-.184-.94-.668 0-.484.373-.867.836-.971 5.48-.923 10.15-1.28 13.92-0.05.41.13.68.56.55.973-.13.41-.56.68-.973.55zm1.3-2.915c-.298.487-.936.65-1.424.354-2.932-1.78-7.16-2.342-11.75-1.282-.54.12-.98-.28-.98-.82 0-.54.44-.94.98-.94 4.98-1.06 9.65-1.52 12.98.05.48.23.77.85.54 1.338zm.13-3.132c-3.41-1.98-8.98-2.16-12.52-1.18-.62.17-1.1-.31-1.1-.94 0-.62.48-1.1 1.1-1.1 4.02-1.02 10.12-.82 14.02 1.48.56.32.74 1.05.42 1.62-.32.56-1.05.74-1.62.42z"/>
+    </svg>
+);
+
+export const YouTubeIcon = () => (
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="YouTube">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.75 12.05c0 .54-.44 1.01-1 1.01H6.25c-.56 0-1-.47-1-1.01V9.95c0-.54.44-1.01 1-1.01h11.5c.56 0 1 .47 1 1.01v4.1zM9.5 14.25v-4.5l4 2.25-4 2.25z"/>
+    </svg>
+);
+
+export const SoundCloudIcon = () => (
+    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-label="SoundCloud">
+        <path d="M7 10.3c.1-.1.1-.3 0-.4l-1.4-1c-.1-.1-.3-.1-.4 0l-1.4 1c-.1.1-.1.3 0 .4L5.2 11c.1.1.3.1.4 0l1.4-.7zM16.1 9.9c.1-.1.1-.3 0-.4l-1.4-1c-.1-.1-.3-.1-.4 0l-1.4 1c-.1.1-.1.3 0 .4l1.4.7c.1.1.3.1.4 0l1.4-.7zm-4.7 0c.1-.1.1-.3 0-.4l-1.4-1c-.1-.1-.3-.1-.4 0l-1.4 1c-.1.1-.1.3 0 .4l1.4.7c.1.1.3.1.4 0l1.4-.7zM22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.45 2.91 8.21 6.84 9.44.57.18 1.16.26 1.76.26H17c2.76 0 5-2.24 5-5zM8 15H6v-2h2v2zm3 0H9v-2h2v2zm3 0h-2v-2h2v2zm3 0h-2v-2h2v2z" />
+    </svg>
+);
+
+export const LinkIcon = () => (
+    <svg {...iconProps} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+    </svg>
+);

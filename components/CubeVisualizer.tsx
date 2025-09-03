@@ -17,7 +17,8 @@ let analyser: AnalyserNode | null = null;
 
 const CubeVisualizer: React.FC<CubeVisualizerProps> = ({ track, preset, audioElement, isPlaying }) => {
   const cubeRef = useRef<HTMLDivElement>(null);
-  const animationFrameId = useRef<number>();
+  // FIX: Initialize useRef with null. `useRef<number>()` is invalid as it requires an initial value of type number.
+  const animationFrameId = useRef<number | null>(null);
   
   const cubeStyle = preset?.cubeStyle || 'wireframe';
   

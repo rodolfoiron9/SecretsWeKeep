@@ -26,7 +26,7 @@ export interface HeroSlide {
 }
 
 export interface ArtistBioEntry {
-  id: string;
+  id:string;
   year: number;
   title: string;
   description: string;
@@ -70,4 +70,10 @@ export interface ThemeConfig {
   headlineFont: string;
   bodyFont: string;
   baseFontSize: number; // in px
+}
+
+export interface SocialLink {
+  id: string;
+  platform: 'Spotify' | 'YouTube' | 'SoundCloud' | 'Other';
+  url: string;
 }

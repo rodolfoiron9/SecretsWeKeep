@@ -1,5 +1,8 @@
 {
-  "name": "RUDYBTZ Portfolio CMS",
+  "name": "Copy of RUDYBTZ Portfolio CMS",
   "description": "An AI-powered digital music portfolio platform for the artist Rudy BTZ, featuring a comprehensive admin dashboard for managing albums, blogs, visualizer presets, and site-wide theme customization.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
 }

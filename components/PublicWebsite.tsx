@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { DatabaseContext } from '../App';
 import { useAudioPlayer } from '../contexts/AudioPlayerContext';
-import { Album, ArtistBioEntry, HeroSlide, BlogPost } from '../types';
-import { AlbumIcon, BioIcon, BlogIcon } from './icons';
+import { Album, ArtistBioEntry, HeroSlide, BlogPost, SocialLink } from '../types';
+import { AlbumIcon, BioIcon, BlogIcon, LinkIcon, SoundCloudIcon, SpotifyIcon, YouTubeIcon } from './icons';
 
 const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -77,35 +77,57 @@ const Hero: React.FC<{ slides: HeroSlide[] }> = ({ slides }) => {
 };
 
 const AlbumSection: React.FC<{ albums: Album[] }> = ({ albums }) => {
-    const { playTrack } = useAudioPlayer();
+    const { playTrack, currentTrack, isPlaying } = useAudioPlayer();
+    const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(albums.length > 0 ? albums[0].id : null);
     
     if(!albums.length) return null;
-    const latestAlbum = albums.sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())[0];
+
+    const handleAlbumClick = (albumId: string) => {
+        setSelectedAlbumId(prevId => (prevId === albumId ? null : albumId));
+    };
+    
+    const selectedAlbum = albums.find(a => a.id === selectedAlbumId);
 
     return (
         <section id="music" className="py-20 px-4 md:px-8 bg-[#151522]">
             <div className="container mx-auto max-w-6xl">
-                 <h2 className="text-4xl font-bold font-orbitron text-center mb-12 flex items-center justify-center gap-4"><AlbumIcon /> Latest Album</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-[#2a2a3e] p-8 rounded-xl shadow-2xl border border-gray-700">
-                    <img src={latestAlbum.coverArtUrl} alt={latestAlbum.title} className="w-full rounded-lg shadow-lg aspect-square object-cover" />
-                    <div>
-                        <h3 className="text-3xl font-bold font-orbitron">{latestAlbum.title}</h3>
-                        <p className="text-gray-400 mb-6">{new Date(latestAlbum.releaseDate).getFullYear()} • {latestAlbum.genre}</p>
-                        <div className="space-y-3">
-                            {latestAlbum.tracks.length > 0 ? latestAlbum.tracks.map((track, i) => (
-                               <button key={track.id} onClick={() => playTrack(track)} className="w-full flex justify-between items-center p-3 rounded-md bg-[#1a1a2e] hover:bg-[var(--primary-color)] transition-colors duration-300 group">
+                 <h2 className="text-4xl font-bold font-orbitron text-center mb-12 flex items-center justify-center gap-4"><AlbumIcon /> Discography</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {albums.map((album) => (
+                        <div key={album.id} className="text-center" onClick={() => handleAlbumClick(album.id)}>
+                            <img 
+                                src={album.coverArtUrl} 
+                                alt={album.title}
+                                className={`w-full rounded-lg shadow-lg aspect-square object-cover cursor-pointer transition-all duration-300 hover:scale-105 ${selectedAlbumId === album.id ? 'ring-4 ring-[var(--primary-color)]' : 'ring-0'}`}
+                            />
+                            <h3 className="font-semibold mt-3">{album.title}</h3>
+                            <p className="text-sm text-gray-400">{new Date(album.releaseDate).getFullYear()}</p>
+                        </div>
+                    ))}
+                </div>
+
+                {selectedAlbum && (
+                    <div className="mt-12 bg-[#2a2a3e] p-8 rounded-xl shadow-2xl border border-gray-700">
+                         <h3 className="text-3xl font-bold font-orbitron">{selectedAlbum.title}</h3>
+                        <p className="text-gray-400 mb-6">{new Date(selectedAlbum.releaseDate).getFullYear()} • {selectedAlbum.genre}</p>
+                         <div className="space-y-3">
+                            {selectedAlbum.tracks.length > 0 ? selectedAlbum.tracks.map((track, i) => {
+                                const isCurrentlyPlaying = currentTrack?.id === track.id && isPlaying;
+                                return (
+                                <button key={track.id} onClick={() => playTrack(track)} className={`w-full flex justify-between items-center p-3 rounded-md transition-colors duration-300 group ${isCurrentlyPlaying ? 'bg-[var(--primary-color)]' : 'bg-[#1a1a2e] hover:bg-opacity-70 hover:bg-[var(--primary-color)]'}`}>
                                     <div className="flex items-center gap-4">
-                                        <span className="text-gray-400 group-hover:text-white">{i + 1}</span>
+                                        <span className={`${isCurrentlyPlaying ? 'text-white' : 'text-gray-400'} group-hover:text-white`}>{i + 1}</span>
                                         <span className="font-semibold text-white">{track.title}</span>
                                     </div>
-                                    <span className="text-sm text-gray-500 group-hover:text-gray-200">{Math.floor(track.duration / 60)}:{String(track.duration % 60).padStart(2, '0')}</span>
+                                    <span className={`text-sm ${isCurrentlyPlaying ? 'text-gray-200' : 'text-gray-500'} group-hover:text-gray-200`}>{Math.floor(track.duration / 60)}:{String(track.duration % 60).padStart(2, '0')}</span>
                                 </button>
-                            )) : (
+                                );
+                            }) : (
                                 <p className="text-gray-500">Tracklist coming soon...</p>
                             )}
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );
@@ -159,18 +181,43 @@ const BlogSection: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
 };
 
 
-const Footer: React.FC = () => (
-    <footer className="bg-[#151522] text-center p-8 border-t border-gray-800">
-        <p>&copy; {new Date().getFullYear()} RudyBtz. All rights reserved.</p>
-        {/* Social links can be added here */}
-    </footer>
-);
+const Footer: React.FC = () => {
+    const db = useContext(DatabaseContext);
+    const socialLinks = db?.socialLinks.getAll() || [];
+
+    const socialIconMap: { [key in SocialLink['platform']]: React.ReactElement } = {
+        Spotify: <SpotifyIcon />,
+        YouTube: <YouTubeIcon />,
+        SoundCloud: <SoundCloudIcon />,
+        Other: <LinkIcon />,
+    };
+
+    return (
+        <footer className="bg-[#1a1a2e] text-center p-8 border-t border-gray-800">
+            <div className="flex justify-center gap-6 mb-4">
+                {socialLinks.map(link => (
+                    <a 
+                        key={link.id} 
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.platform}
+                        className="text-gray-400 hover:text-[var(--primary-color)] transition-transform duration-300 hover:scale-110"
+                    >
+                        {socialIconMap[link.platform]}
+                    </a>
+                ))}
+            </div>
+            <p>&copy; {new Date().getFullYear()} RudyBtz. All rights reserved.</p>
+        </footer>
+    );
+};
 
 
 const PublicWebsite: React.FC = () => {
     const db = useContext(DatabaseContext);
     
-    const albums = db?.albums.getAll() || [];
+    const albums = db?.albums.getAll().sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()) || [];
     const bioEntries = db?.artistBio.getAll().sort((a,b) => b.year - a.year) || [];
     const slides = db?.heroSlides.getAll() || [];
     const posts = db?.blogPosts.getAll().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) || [];
